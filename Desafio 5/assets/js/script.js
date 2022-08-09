@@ -1,19 +1,30 @@
 // 
-const tareasInicial = [
-
-]
-
-
 const fecha = document.querySelector("#fecha")
 const lista = document.querySelector("#lista")
 btnEnter = document.querySelector("#botonenter")
+const okcounterHTML = document.querySelector("#realizadas")
+const notcounterHTML = document.querySelector("#pendientes")
+
 const check = `fa-check-circle`
 const uncheck = `fa-circle`
 const lineThrough = `line-through`
-const id = 0
-const LIST = []
-html = ""
-
+let id = 0
+const LIST = [
+    {   nombre: "Darle comida al perro",
+        id: id,
+        realizado: false,
+        eliminado: false},
+    {   nombre: "Hacer la cama",
+        id: id,
+        realizado: false,
+        eliminado: false},
+    {   nombre: "Comer gomitas",
+        id: id,
+        realizado: false,
+        eliminado: false}
+]
+let okcounter = 0
+let notcounter = 0
 
 //fecha
 const Fecha = new Date()
@@ -38,6 +49,9 @@ function agregarTarea (tarea, id, realizado, eliminado) {
         </li>
         `
     lista.insertAdjacentHTML("beforeend", elemento)
+    //lista.innerHTML+=elemento
+    notcounter++
+    notcounterHTML.innerHTML=notcounter
 }
 
 function tareaRealizada(element) {
@@ -91,9 +105,43 @@ lista.addEventListener('click',function(event){
     const element = event.target
     const elementData = element.attributes.data.value
     if(elementData==='realizado') {
+        //console.log(element)
+        //console.log(elementData)
+        //console.log(element.classList)
+        if(element.classList.contains(uncheck)){
+            notcounter--
+            okcounter++
+        }
+        else if(element.classList.contains(check)){
+            notcounter++
+            okcounter--
+        }
+        notcounterHTML.innerHTML=notcounter
+        okcounterHTML.innerHTML=okcounter
         tareaRealizada(element)
     }
     else if (elementData==="eliminado"){
         tareaEliminada(element)
+        if(notcounter>0){
+            notcounter--
+        }
+        if(okcounter>0){
+            okcounter--
+        }
+        notcounterHTML.innerHTML=notcounter
+        okcounterHTML.innerHTML=okcounter
     }
 })
+
+function cargaInicial(id) {
+    for(const tarea of LIST){
+        console.log(tarea)
+        agregarTarea(tarea.nombre,tarea.id,tarea.realizado,tarea.eliminado)
+        console.log('ID antes era:' + id)
+        id++
+        console.log('ID despues es:' + id)
+    }
+    okcounterHTML.innerHTML = okcounter
+    notcounterHTML.innerHTML = notcounter
+}
+cargaInicial()
