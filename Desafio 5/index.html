@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/7f3d90e80a.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <title>To do list</title>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="perfil">
+            <div id="fecha"></div>
+            <h1>Hola estrellita &#10024;</h1>
+            <span>la tierra te dice hola</span>
+        </div>
+
+        <div class="agregar-tarea">
+            <input type="text" placeholder="agrega una tarea..." id="input">
+            <i id="botonenter" class="fas fa-plus-circle"></i>
+        </div>
+
+        <div class="seccion-tarea">
+            <h3>Tus tareas pendientes</h3>
+            <ul id="lista">
+            </ul>
+        </div>
+
+        <div class="realizadas-pendientes">
+                    <p class="text">Tareas realizadas: </p> <span id="realizadas">0</span>
+                    <p class="text">Tareas pendientes: </p> <span id="pendientes">0</span>
+        </div>
+
+    </div>
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>
